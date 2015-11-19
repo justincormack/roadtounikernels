@@ -1,0 +1,396 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>The Road to Unikernels</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+</head>
+<body class="list">
+	<style>
+#Cover p.author {font-size: 200%;}
+</style>
+	<header class="caption">
+		<h1>The Road to Unikernels</h1>
+		<p>Justin Cormack</p>
+	</header>
+	<section class="slide cover" id="Cover"><div>
+		<h2>The Road to Unikernels</h2>
+		<p>Justin Cormack</p>
+		<img src="pictures/steampowerstation.jpg" alt="" width="100%">
+		<!--
+			To apply styles to the certain slides
+			set slide ID to get needed elements
+			-->
+		<style>
+			#Cover h2 {
+				margin:30px 0 0;
+				color:#FFF;
+				text-align:center;
+				font-size:70px;
+				}
+			#Cover p {
+				margin:10px 0 0;
+				text-align:center;
+				color:#FFF;
+				font-style:italic;
+				font-size:20px;
+				}
+				#Cover p a {
+					color:#FFF;
+					}
+				a.linked { text-decoration: none; color: #fff; border: none;}
+                span.strike { text-decoration: line-through;}
+                .pic img { max-width:90%; height:90%; max-height: 90%;}
+                .pic a { text-decoration: none; color: #fff;}
+				.shiftimage { position: relative; top: -40px; left: 100px;}
+				.floatimage { float: right;}
+		</style>
+	</div></section>
+
+<section class="slide">
+<div>
+<h2>Slides at http://roadtounikernels.myriabit.com/</h2>
+</div>
+</section>
+
+
+<section class="slide">
+<div>
+<h2>Justin Cormack</h2>
+<p><span class="strike">London</span> Cambridge based developer
+<p>Working at <a href="http://unikernel.com/">Unikernel Systems</a>
+
+<p>On Twitter <a href="https://twitter.com/justincormack">@justincormack</a> and Github <a href="https://github.com/justincormack">justincormack</a>
+
+<p>Organized <a href="http://operatingsystems.io/">OperatingSystems.io</a> conference last year
+</div>
+</section>
+
+<section class="slide">
+<div>
+<p>Co-author of <a href="https://www.safaribooksonline.com/library/view/docker-in-the/9781939902184/">Docker in the Trenches: Successful Production Deployment</a>
+<!--br/>
+50% discount code <a href="https://gum.co/lQGH/softwarecircus">https://gum.co/lQGH/softwarecircus</a-->
+<br/>
+<a href="https://www.safaribooksonline.com/library/view/docker-in-the/9781939902184/" class="linked"><img src="pictures/docker_cover.png" width="40%"/></a>
+</div>
+</section>
+
+
+<section class="slide shout">
+<div>
+<h2>Systems Programming</h2>
+</div>
+</section>
+
+<section class="slide">
+<div>
+<img src="pictures/systemspeople.png" height="100%"/>
+</div>
+</section>
+
+
+<section class="slide">
+<div>
+<ul>
+<li>Systems programming is unusually difficult compared to other forms of programming
+<li>OS development and design are the pinnacle or programming achievement, and the highest calling for any programmer
+<li>Systems programmers are inherently superior to other kinds of programmers
+<li>A competent systems programmer will naturally be gifted in all other forms of programming
+</ul>
+<p>I find these assumptions laughable. &ndash; <a href="http://c2.com/cgi/wiki?CultOfSystemsProgramming">Jay Osako</a>
+</div>
+</section>
+
+<section class="slide">
+<div>
+<p>Systems programming has been divided from normal programming</p>
+<ul>
+<li>Confined to C, since the end of LISP machines in the 1980s</li>
+<li>Special tooling
+<li>Little code reuse
+<li>Poor debugging</li>
+<li>Monoliths...</li>
+</ul>
+</div>
+</section>
+
+<section class="slide">
+<div>
+<blockquote>True, linux is monolithic, and I agree that microkernels are nicer... As
+has been noted (not only by me), the linux kernel is a miniscule part of
+a complete system: Full sources for linux currently runs to about 200kB
+compressed. And all of that
+source is portable, except for this tiny kernel that you can (provably:
+I did it) re-write totally from scratch in less than a year without
+having /any/ prior knowledge.&ndash; <a href="https://groups.google.com/forum/#!topic/comp.os.minix/wlhw16QWltI%5B1-25%5D">Linus Torvalds, 1992</a></blockquote>
+</div>
+</section>
+
+<section class="slide">
+<div>
+	<p>Currently Linux has over 25 million lines of code...</p>
+<img src="pictures/linuxcodelines.png" width="100%"/>
+<p>... and Windows has 50 million.
+</div>
+</section>
+
+<section class="slide shout">
+<div>
+<h2>System software is changing</h2>
+</div>
+</section>
+
+<section class="slide">
+<div>
+<h2>Rust</h2>
+	<img src="pictures/rust-logo-blk.svg" class="floatimage" width="40%"/>
+<ul>
+<li>zero-cost abstractions
+<li>guaranteed memory safety
+<li>threads without data races
+<li>type inference
+<li>minimal runtime
+</ul>
+</div>
+</section>
+
+<section class="slide">
+<div>
+<h2>Go</h2>
+	<img src="pictures/gopher.png" class="floatimage" width="40%"/>
+<ul>
+<li>From the Plan 9 operating system heritage
+<li>memory safety
+<li>strong distributed programming libraries
+</ul>
+</div>
+</section>
+
+<section class="slide">
+<div>
+<h2>OCaml</h2>
+	<img src="pictures/ocaml.svg" class="floatimage" width="40%"/>
+<ul>
+<li>Functional language
+<li>Full network stack implemented from TCP to SSL
+<li>Memory and type safe
+</ul>
+</div>
+</section>
+
+
+<section class="slide">
+<div>
+<h2>Also many more languages</h2>
+<ul>
+<li>Haskell
+<li>Lua and LuaJIT
+<li>Elexir
+<li>JavaScript
+<li>Nim
+<li>D
+</ul>
+</div>
+</section>
+
+<section class="slide shout">
+<div>
+<h2>Unikernels</h2>
+</div>
+</section>
+
+<section class="slide">
+<div>
+<h2>Not reinventing the general purpose OS</h2>
+<p>No one is trying to remake Linux or Windows style monoliths
+<p>The model is just enough system software to run your code
+<p>Without any external dependencies, you have total control
+<p>Everything is open source, with liberal licenses.
+</div>
+</section>
+
+<section class="slide pic">
+<div>
+<img src="pictures/unikernel.png" width="100%"/>
+</div>
+</section>
+
+
+<section class="slide pic">
+<div>
+<p>A container with <em>everything</em> in it
+<img src="pictures/container-ansicht-details-gross.jpg" width="60%"/>
+</div>
+</section>
+
+<section class="slide">
+<div>
+<h2>A security hardened container</h2>
+<ul>
+<li>No large OS attack surface
+<li>Just what you need, no extra shell or other executables, so small attack surface
+<li>Can run inside virtual machine for sandboxing
+<li>Language guarantees, like type safety and memory safety
+<li>Can use additional sandboxing techniques: ASLR, NaCl etc
+<li>Whole system hardening
+<li>Ideal for embedded systems
+</ul>
+</div>
+</section>
+
+<section class="slide pic">
+<div>
+<p>And a distributed system of these containers
+<a href="https://commons.wikimedia.org/wiki/File:Sydney_container_port_by_air.jpg">
+<img src="pictures/Sydney_container_port_by_air.jpg" width="60%"/>
+</a>
+</div>
+</section>
+
+<section class="slide">
+<div>
+<h2>Distributed from the start</h2>
+<ul>
+<li>Single application unikernels mean that you have to build distributed systems
+<li>It is pretty difficult to build fat services
+<li>No fork or processes in a unikernel
+<li>Aim to reuse existing coordination code, and offer some new options...
+</ul>
+</div>
+</section>
+
+<section class="slide">
+<div>
+<h2>Examples of unikernels</h2>
+<ul>
+<li><a href="https://mirage.io/">Mirage</a> (OCaml)
+<li><a href="https://galois.com/project/halvm/">HalVM</a> (Haskell)
+<li><a href="http://erlangonxen.org/">Ling</a> (Erlang)
+<li><a href="http://runtimejs.org/">runtime.js</a> (JavaScript)
+<li><a href="http://cnp.neclab.eu/clickos/">ClickOS</a> (for networking applications)
+</ul>
+</div>
+</section>
+
+<section class="slide">
+<div>
+<h2>Rump kernels</h2>
+<ul>
+<li>A toolkit of reusable drivers for any unikernel to use, unmodified form NetBSD
+<li>Also can construct unikernels from existing code
+<li>Node.js, Python, PHP, Erlang
+<li><a href="http://rumpkernel.org/">http://rumpkernel.org/</a>
+</ul>
+</div>
+</section>
+
+<section class="slide shout">
+<div>
+<h2>Deployment</h2>
+</div>
+</section>
+
+<section class="slide">
+<div>
+<p>Unikernels are at the stage that Linux containers were three years ago before Docker
+<ul>
+<li>Few users
+<li>Hard to build
+<li>Hard to ship
+<li>Hard to run
+</ul>
+<p>Clearly this needs to be fixed for widespread use...
+</div>
+</section>
+
+<section class="slide">
+<div>
+<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">&quot;Wouldn&#39;t it be cool if we could deploy and manage unikernels with Docker?&quot; Yes, yes it would! <a href="https://twitter.com/hashtag/dockercon?src=hash">#dockercon</a> <a href="https://t.co/ZjJWkAuEQm">pic.twitter.com/ZjJWkAuEQm</a></p>&mdash; Solomon Hykes (@solomonstre) <a href="https://twitter.com/solomonstre/status/666650393275932672">November 17, 2015</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+</section>
+
+<section class="slide">
+<div>
+<h2>Deployment of unikernels via Docker</h2>
+<ul>
+<li>Prototype at Dockercon EU
+<li>Deployment with Docker, running under KVM for isolation
+<li>Rough edges but will integrate into Docker tools via pluggable drivers
+<li>Will give a drop-in deployment story
+</ul>
+</div>
+</section>
+
+<section class="slide">
+<div>
+<h2>Common config</h2>
+<ul>
+<li>Mirage community developing configuration tool called Functoria
+<li>Aim to provide a common tooling for configuration of unikernels
+<li>Standard metadata
+<li>Integrate with <a href="https://github.com/opencontainers/specs">Open Containers Specification</a>?
+</ul>
+</div>
+</section>
+
+<!-- functoria screenshot from mailing list -->
+
+<section class="slide">
+<div>
+<h2>Unikernel.org</h2>
+<ul>
+<li>Common community to share tooling, code and tests
+<li>Working on ways to reuse existing code across languages
+<li>Working on standard configuration and other layers
+<li>Take the learnings from Mirage and apply more broadly.
+</ul>
+</div>
+</section>
+
+<section class="slide shout">
+<div>
+<h2>Unikernels</h2>
+</div>
+</section>
+
+
+<section class="slide">
+<div>
+<h2>Unikernels</h2>
+<ul>
+<li>Small
+<li>Secure
+<li>Fast
+</ul>
+<p>Pick all three
+</div>
+</section>
+
+<section class="slide">
+<div>
+<h2>Questions?</h2>
+<ul>
+<li><a href="https://twitter.com/justincormack">@justincormack</a>
+<li>justin.cormack@unikernel.com
+<li><a href="http://unikernel.org">http://unikernel.org</a>
+</div>
+</section>
+
+
+
+
+
+
+
+	<p class="badge"><a href="https://github.com/justincormack/roadtounikernels">Fork me on Github</a></p>
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="shower/shower.min.js"></script>
+</html>
